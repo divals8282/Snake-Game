@@ -12,3 +12,8 @@ export enum EDirection {
     IDLE = 'idle'
 }
 
+export interface ISnake {
+    head: { x: number; y: number };
+    tail: { x: number; y: number }[];
+}
+
