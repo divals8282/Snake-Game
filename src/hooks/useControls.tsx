@@ -12,8 +12,7 @@ export const useControls = () => {
         }
         
         window.useControlsInUse = true;
-        
-        html?.addEventListener('keydown', (e) => {
+        const handler = (e: KeyboardEvent) => {
             switch (e.key) {
                 case "w":
                     setDirection(EDirection.UP);
@@ -28,7 +27,13 @@ export const useControls = () => {
                     setDirection(EDirection.RIGHT);
                     break;
             }
-        })
+        }
+        html?.addEventListener('keydown', handler);
+
+        return () => {
+            window.useControlsInUse = false;
+            html?.removeEventListener('keydown', handler);
+        }
 
     }, [])
 
