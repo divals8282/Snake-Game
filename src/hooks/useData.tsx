@@ -17,7 +17,7 @@ export const useData = () => {
         return newState;
     }, {
         ...config,
-        head: { x: (config.matrixSize / 2) + 1, y: (config.matrixSize / 2) + 1 },
+        head: { x: (Math.round(config.matrixSize / 2) + 1), y: Math.round(config.matrixSize / 2) + 1 },
         tail: []
     });
 
