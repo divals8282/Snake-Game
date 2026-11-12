@@ -15,5 +15,7 @@ export enum EDirection {
 export interface ISnake {
     head: { x: number; y: number };
     tail: { x: number; y: number }[];
+    fruit: { x: number; y: number } | null;
+    score: number;
 }
 

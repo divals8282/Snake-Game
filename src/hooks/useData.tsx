@@ -11,7 +11,37 @@ export const useData = () => {
             case "SET_DIRECTION":
                 newState.prevDirection = state.direction;
                 newState.direction = action.payload;
+                newState.gameState = "playing";
                 break;
+            case "MOVE":
+                const { direction, head } = state;
+
+                switch (direction) {
+                    case "up":
+                        newState.head = {
+                            ...head,
+                            y: head.y - 1
+                        };
+                        break;
+                    case "down":
+                        newState.head = {
+                            ...head,
+                            y: head.y + 1
+                        };
+                        break;
+                    case "left":
+                        newState.head = {
+                            ...head,
+                            x: head.x - 1
+                        };
+                        break;
+                    case "right":
+                        newState.head = {
+                            ...head,
+                            x: head.x + 1
+                        };
+                        break;
+                }
         }
 
         return newState;

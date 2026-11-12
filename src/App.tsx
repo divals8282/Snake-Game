@@ -7,14 +7,28 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: "SET_DIRECTION", payload: direction });
-  }, [direction])
+  }, [direction]);
+
+  useEffect(() => {
+    if (state.gameState === "playing") {
+      window.movementIntervalId = setInterval(() => {
+        dispatch({ type: "MOVE" });
+      }, state.gameSpeed);
+    } else {
+      clearInterval(window.movementIntervalId);
+    }
+
+    return () => {
+      clearInterval(window.movementIntervalId);
+    };
+  }, [state.gameState]);
 
   const generateMatrix = () => {
     const matrix: (string|number)[][] = [];
 
     for (let i = 0; i < state.matrixSize; i++) {
       matrix[i] = [];
-      for (let j = 0; j < state.matrixSize; j++) {
+      for (let j = 0; j < state.matrixSize; j++) { 
         const isHead = state.head.x === j && state.head.y === i;
         const isTail = state.tail.some(tail => tail.x === j && tail.y === i);
 
