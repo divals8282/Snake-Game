@@ -23,45 +23,47 @@ function App() {
     };
   }, [state.gameState]);
 
-  const generateMatrix = () => {
-    const matrix: (string|number)[][] = [];
+  const renderGame = () => {
+    const matrix: (string | number)[][] = [];
 
     for (let i = 0; i < state.matrixSize; i++) {
       matrix[i] = [];
-      for (let j = 0; j < state.matrixSize; j++) { 
+      for (let j = 0; j < state.matrixSize; j++) {
         const isHead = state.head.x === j && state.head.y === i;
         const isTail = state.tail.some(tail => tail.x === j && tail.y === i);
 
-        if(isHead)
+        if (isHead)
           matrix[i].push("H");
-        else if(isTail)
+        else if (isTail)
           matrix[i].push("T");
+        else if (state.fruit && state.fruit.x === j && state.fruit.y === i)
+          matrix[i].push("F");
         else
           matrix[i].push("");
       }
     }
 
-    return matrix;
+    return matrix.map((row, i) => (
+      <div key={i + 1} className="game__matrix__row" style={styles.game__matrix__row}>
+        {row.map((cell, j) => (
+          <div key={j + 1} className="game__matrix__cell" style={styles.game__matrix_cell}>
+            {cell}
+          </div>
+        ))}
+      </div>
+    ));
   }
 
   return (
     <div className="game" style={styles.game}>
       <div className="game__matrix" style={styles.game__matrix}>
-        {generateMatrix().map((row, i) => (
-          <div key={i + 1} className="game__matrix__row" style={styles.game__matrix__row}>
-            {row.map((cell, j) => (
-              <div key={j + 1} className="game__matrix__cell" style={styles.game__matrix_cell}>
-                {cell}
-              </div>
-            ))}
-          </div>
-        ))}
+        {renderGame()}
       </div>
     </div>
   )
 }
 
-var styles = {
+const styles = {
   game: {
 
   },

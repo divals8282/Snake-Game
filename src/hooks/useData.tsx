@@ -2,6 +2,7 @@ import { useReducer } from "react"
 import { config } from "../config"
 import type { IConfig, TAction } from "../types";
 import type { ISnake } from "./types";
+import { genFruit } from "../game-actions";
 
 export const useData = () => {
     const [state, dispatch] = useReducer((state: IConfig & ISnake, action: TAction) => {
@@ -14,7 +15,12 @@ export const useData = () => {
                 newState.gameState = "playing";
                 break;
             case "MOVE":
-                const { direction, head } = state;
+                const { direction, head, fruit } = state;
+
+                if(!fruit) {
+                    const newFruit = genFruit(head, state.tail, state.matrixSize);
+                    newState.fruit = newFruit;
+                }
 
                 switch (direction) {
                     case "up":

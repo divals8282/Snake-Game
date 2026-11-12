@@ -12,10 +12,15 @@ export enum EDirection {
     IDLE = 'idle'
 }
 
+export interface IPosition {
+    x: number;
+    y: number;
+}
+
 export interface ISnake {
-    head: { x: number; y: number };
-    tail: { x: number; y: number }[];
-    fruit: { x: number; y: number } | null;
+    head: IPosition;
+    tail: IPosition[];
+    fruit: IPosition | null;
     score: number;
 }
 
