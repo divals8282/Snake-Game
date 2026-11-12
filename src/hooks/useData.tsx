@@ -48,7 +48,9 @@ export const useData = () => {
     }, {
         ...config,
         head: { x: (Math.round(config.matrixSize / 2) + 1), y: Math.round(config.matrixSize / 2) + 1 },
-        tail: []
+        tail: [],
+        fruit: null,
+        score: 0
     });
 
 
