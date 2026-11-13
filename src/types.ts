@@ -16,4 +16,4 @@ export interface IConfig {
 
 export type TAction = 
 | { type: "SET_DIRECTION"; payload: EDirection }
-| { type: "MOVE" };
+| { type: "FRAME" };

@@ -24,3 +24,6 @@ export interface ISnake {
     score: number;
 }
 
+export interface IGame {
+    score: number;
+}

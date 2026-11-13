@@ -11,9 +11,7 @@ function App() {
 
   useEffect(() => {
     if (state.gameState === "playing") {
-      window.movementIntervalId = setInterval(() => {
-        dispatch({ type: "MOVE" });
-      }, state.gameSpeed);
+      window.movementIntervalId = setInterval(() => dispatch({ type: "FRAME" }), state.gameSpeed);
     } else {
       clearInterval(window.movementIntervalId);
     }
