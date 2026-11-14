@@ -6,14 +6,17 @@ declare global {
     }
 }
 
+export type TGameState = "playing" | "start-menu" | "gameover"
+
 export interface IConfig {
     matrixSize: number;
     direction: EDirection;
-    prevDirection: EDirection;
-    gameState: "playing" | "paused" | "gameover";
+    gameState: TGameState;
     gameSpeed: number;
 }
 
-export type TAction = 
-| { type: "SET_DIRECTION"; payload: EDirection }
-| { type: "FRAME" };
+export type TAction =
+    | { type: "SET_DIRECTION"; payload: EDirection }
+    | { type: "FRAME" }
+    | { type: "GAME_STATE", payload: TGameState }
+    | { type: "RESET" };

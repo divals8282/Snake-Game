@@ -2,9 +2,8 @@ import { EDirection } from "./hooks/types";
 import type { IConfig } from "./types";
 
 export const config: IConfig = {
-    matrixSize: 21,
+    matrixSize: 9,
     direction: EDirection.IDLE,
-    prevDirection: EDirection.IDLE,
-    gameState: "paused",
-    gameSpeed: 40
+    gameState: "start-menu",
+    gameSpeed: 300 /* lower faster */
 }

@@ -3,7 +3,6 @@ import { EDirection } from "./types";
 
 export const useControls = () => {
     const [direction, setDirection] = useState<EDirection>(EDirection.IDLE);
-
     useEffect(() => {
         const html = document.querySelector('html');
 

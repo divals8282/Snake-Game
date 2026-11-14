@@ -1,10 +1,10 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App.tsx'
+import { Context, initialGameState } from './hooks/useData.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <Context value={initialGameState}>
     <App />
-  </StrictMode>,
+  </Context>
 )
