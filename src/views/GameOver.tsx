@@ -1,8 +1,15 @@
-import { useData } from "../hooks"
+import { useData } from "../hooks/useData"
 
 export const GameOver = () => {
-    
-    const { state: { score }, dispatch } = useData();
+    const data = useData();
+
+    if (!data) {
+        return null;
+    }
+
+    const { dispatch,
+        state: { score }
+    } = data;
 
     return (
         <div className="game-over">

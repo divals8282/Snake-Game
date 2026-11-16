@@ -25,7 +25,15 @@ export const Game = () => {
 
     const direction = useControls();
 
-    const { dispatch, state } = useData();
+    const data = useData();
+
+    if (!data) {
+        return null;
+    }
+
+    const { dispatch,
+        state
+    } = data;
 
     useEffect(() => {
         dispatch({ type: "SET_DIRECTION", payload: direction });

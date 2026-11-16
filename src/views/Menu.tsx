@@ -1,8 +1,15 @@
 import { useData } from "../hooks"
 
 export const Menu = () => {
-    const { state, dispatch } = useData();
-    
+    const data = useData();
+
+    if (!data) {
+        return null;
+    }
+
+    const { dispatch,
+
+    } = data;
     return (
         <div className="menu">
             <h1>Snake Game</h1>
